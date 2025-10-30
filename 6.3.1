@@ -1,0 +1,1 @@
+db.orders.aggregate([{$match:{status:"pending"}},{$lookup:{from:"products",localField:"product_id",foreignField:"_id",as:"product"}},{$unwind:"$product"},{$project:{_id:0,product_name:"$product.name",quantity:1}}]);
