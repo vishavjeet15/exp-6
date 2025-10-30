@@ -1,0 +1,1 @@
+db.products.aggregate([{$group:{_id:"$category",average_price:{$avg:"$price"}}},{$project:{_id:0,category:"$_id",average_price:{$round:["$average_price",2]}}},{$sort:{average_price:-1,category:1}}]);
