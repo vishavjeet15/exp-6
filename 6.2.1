@@ -1,0 +1,1 @@
+db.products.aggregate([{$group:{_id:"$supplier",total_stock:{$sum:"$stock_quantity"}}},{$project:{_id:0,supplier:"$_id",total_stock:1}},{$sort:{total_stock:-1,supplier:1}}]);
